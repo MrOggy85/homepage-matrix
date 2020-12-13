@@ -27,6 +27,13 @@ span {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
+img {
+  object-fit: cover;
+  object-position: center;
+  height: 95px;
+  width: 100px;
+}
+
 /* dd */
 
 ul {

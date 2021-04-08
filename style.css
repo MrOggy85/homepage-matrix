@@ -59,6 +59,11 @@ li {
 
   font-family: monospace;
 }
+@media screen and (max-height: 700px) {
+  .content-wrapper {
+    top:200px;
+  }
+}
 
 .content-inner {
   position: relative;

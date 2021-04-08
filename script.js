@@ -11,16 +11,6 @@ function getChar() {
     r(0x0020, 0x003f)
   ));
 }
-function loop(fn, delay) {
-  let stamp = Date.now();
-  function _loop() {
-    if (Date.now() - stamp >= delay) {
-      fn(); stamp = Date.now();
-    }
-    requestAnimationFrame(_loop);
-  }
-  requestAnimationFrame(_loop);
-}
 class Char {
   constructor() {
     this.element = document.createElement('span');
@@ -72,9 +62,6 @@ class Rain {
       let c = new Char();
       root.appendChild(c.element);
       chars.push(c);
-      if (Math.random() < .5) {
-        loop(() => c.mutate(), r(1e3, 5e3));
-      }
     }
     this.trail = new Trail(chars, {
       size: r(10, 30), offset: r(0, 100)
@@ -84,8 +71,8 @@ class Rain {
   drop() {
     let trail = this.trail;
     let len = trail.body.length;
-    let delay = r(10, 100);
-    loop(() => {
+
+    setInterval(() => {
       trail.move();
       trail.traverse((c, i, last) => {
         c.element.style = `
@@ -101,11 +88,15 @@ class Rain {
           `;
         }
       });
-    }, delay);
+    }, 150);
   }
 }
 
 const main = document.querySelector('main');
-for (let i = 0; i < 50; ++i) {
-  new Rain({ target: main, row: 50 });
+
+const columns = window.screen.width > 500 ? 30 : 10
+const rows = window.screen.width > 500 ? 30 : 10
+
+for (let i = 0; i < columns; ++i) {
+  new Rain({ target: main, row: 30 });
 }

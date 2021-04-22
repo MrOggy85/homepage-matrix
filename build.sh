@@ -25,6 +25,6 @@ deno run \
   --allow-read \
   --allow-write \
   --allow-env \
-  ./scripts/copySrcToDist.ts
+  ./scripts/build.ts
 
 ls -la

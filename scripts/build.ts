@@ -1,5 +1,5 @@
-import copySrcToDist from './copySrcToDist.ts';
+import copySrcToDist from "./copySrcToDist.ts";
 
-console.log('cwd', Deno.cwd());
+console.log("cwd", Deno.cwd());
 
 copySrcToDist();

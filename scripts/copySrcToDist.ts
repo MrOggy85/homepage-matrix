@@ -9,7 +9,12 @@ function replaceBaseUrl() {
 
 function copySrcToDist() {
   console.log('copy /src to /dist...')
-  Deno.removeSync('dist', { recursive: true });
+  try {
+    Deno.removeSync('dist', { recursive: true });
+  } catch (error) {
+    console.log('dist folder does not exists. Resuming...')
+  }
+
   Deno.mkdirSync('dist');
   const srcFolder = Deno.readDirSync('src')
 

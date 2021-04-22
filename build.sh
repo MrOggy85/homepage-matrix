@@ -6,6 +6,7 @@ echo "-----------------------"
 
 uname -a
 pwd
+ls -la
 
 echo "installing Deno..."
 curl -fsSL https://deno.land/x/install/install.sh | sh
@@ -25,3 +26,5 @@ deno run \
   --allow-write \
   --allow-env \
   ./scripts/copySrcToDist.ts
+
+ls -la
